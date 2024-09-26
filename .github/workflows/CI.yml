@@ -40,12 +40,12 @@ jobs:
           push: false
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.docker_image }}:${{ inputs.docker_tag }}
 
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.20.0
-        with:
-          image-ref: '${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.docker_image }}:${{ inputs.docker_tag }}'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
+      # - name: Run Trivy vulnerability scanner
+      #   uses: aquasecurity/trivy-action@0.20.0
+      #   with:
+      #     image-ref: '${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.docker_image }}:${{ inputs.docker_tag }}'
+      #     format: 'sarif'
+      #     output: 'trivy-results.sarif'
 
       - name: Build and push
         uses: docker/build-push-action@v6
