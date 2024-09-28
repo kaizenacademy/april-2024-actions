@@ -2,6 +2,9 @@ name: CI
 
 on:
 
+  push:
+    branches: ["main"]
+
   workflow_dispatch:
     inputs:
       docker_image:
@@ -38,7 +41,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ inputs.docker_image }}:${{ inputs.docker_tag }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/kaizenacademy:3.0.0    #${{ inputs.docker_image }}:${{ inputs.docker_tag }}
 
       # - name: Run Trivy vulnerability scanner
       #   uses: aquasecurity/trivy-action@0.20.0
